@@ -4,13 +4,12 @@
            <div class="informacao">
                <h1>Crie o seu hambúrguer<br> que satisfarça a sua<br>fome!</h1>
 
-               <router-link class="btnMake" to="/about">CRIAR</router-link>
+               <router-link class="btnMake" to="/MakeBurger">CRIAR</router-link>
            </div>
-           
        </div>
        <div class="mainBanner__illustration">
            <div class="illustration">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.7 349.7">
+               <svg class="emote" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.7 349.7">
                     <title>emote</title>
                     <g id="emote">
                         <g id="cabeça">
@@ -101,10 +100,11 @@
     .mainBanner{
         width: 80%;
         display: grid;
+        grid-gap: 1rem;
         grid-template-columns: 1fr .5fr;
         margin: 0 auto;
     }
-    svg{
+    .emote{
         width: 100%;
     }
     .mainBanner__illustration{
@@ -119,12 +119,13 @@
         align-items: center;
     }
     .mainBanner__inform{
+        display: grid;
         margin: auto;
         padding-right: 1.5rem;
         border-right: .3rem solid var(--red);
     }
     .informacao h1{
-        font-size: 4vw; 
+        font-size: 3.8vw; 
         margin-bottom: 2rem; 
     }
 
@@ -147,6 +148,26 @@
        padding: 1rem;
     }
     /* animation============================ */
+    .emote{
+        animation: emote 3s infinite linear alternate;
+        transform-origin:center;
+        transform-box: fill-box;
+    }
+    @keyframes emote{
+        0% {
+            transform: rotateZ(0deg);
+        }
+        25% {
+            transform: rotateZ(0deg);
+        }
+        50% {
+            transform: rotateZ(0deg);
+        }
+        100% {
+            
+            transform: rotateZ(3deg);
+        }
+    }
      #olhosAberto{
         animation: olhosAberto 3s infinite cubic-bezier(0.68, -0.28, 0.35, 1.58) alternate;
         transform-origin: center;
@@ -175,7 +196,6 @@
         animation: olhoFechado 3s infinite cubic-bezier(0.68, -0.28, 0.35, 1.58) alternate;
         transform-origin: center;
         transform-box: fill-box;
-        
     }
     @keyframes olhoFechado{
         0% {
@@ -195,8 +215,7 @@
     @media only screen and (max-width: 768px) {
     .mainBanner{
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-
+        grid-template-rows: 1fr .5fr;
     }
     .mainBanner__inform{
         order: 1;

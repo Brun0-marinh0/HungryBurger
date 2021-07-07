@@ -1,17 +1,19 @@
 <template>
   <div class="home">
     <Banner :logoNome="logoNome_src" :alt="app_name"/>
-    <h1>home</h1>
+    <Main/>
   </div>
 </template>
 
 <script>
   import Banner from "../components/Banner.vue"
+  import Main from "../components/Main.vue"
 
   export default{
     name: "Home",
     components:{
-      Banner
+      Banner,
+      Main
     },
     data(){
       return{

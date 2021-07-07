@@ -18,25 +18,27 @@ export default{
   :root {
     --white: #f5f5f5;
     --red:#EE5157;
-    --black: #22222;
+    --black:#00000;
+   
   }
   *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700&display=swap');
 
   body{
     background: var(--white);
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: .6rem;
     color: var(--red);
   }
 
   .container{
-    border: .3rem solid var(--red);
+    border: .7rem solid var(--red);
     width: 100%;
-    min-height: 100vh;
+    min-height: 97vh;
     padding: 2rem;
   }
 
