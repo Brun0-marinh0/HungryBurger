@@ -122,7 +122,7 @@
         display: grid;
         margin: auto;
         padding-right: 1.5rem;
-        border-right: .3rem solid var(--red);
+        /* border-right: .3rem solid var(--red); */
     }
     .informacao h1{
         font-size: 3.8vw; 
@@ -212,7 +212,8 @@
             opacity: 1;
         }
     }
-    @media only screen and (max-width: 768px) {
+    /* responsive================================================= */
+    @media only screen and (max-width: 600px) {
     .mainBanner{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr .5fr;
@@ -230,6 +231,10 @@
     }
     .mainBanner{
         width: 100%;
+    }
+    .emote{
+        width: 50%;
+        margin: 0 auto;
     }
   }
 </style>

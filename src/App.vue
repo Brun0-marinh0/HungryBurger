@@ -18,8 +18,7 @@ export default{
   :root {
     --white: #f5f5f5;
     --red:#EE5157;
-    --black:#00000;
-   
+    --black: #222222;
   }
   *{
     margin: 0;
@@ -31,15 +30,21 @@ export default{
   body{
     background: var(--white);
     font-family: 'Poppins', sans-serif;
-    margin: .6rem;
     color: var(--red);
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--red); 
+    border-radius: 10px;
   }
 
   .container{
-    border: .7rem solid var(--red);
     width: 100%;
     min-height: 97vh;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   @media only screen and (max-width: 768px) {

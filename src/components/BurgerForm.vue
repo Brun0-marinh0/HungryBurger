@@ -3,7 +3,7 @@
     <div class="containerMake">
 
         <div class="image_hungryBurger">
-            <p>img</p>
+            <img :src="logoNome" :alt="alt" id="logoNome">
         </div>
 
         <div class="form">
@@ -11,10 +11,12 @@
                 <h1>Crie o seu hámburguer</h1>
             </div>
             <form id="burger-form">
+                
                 <div class="labelForm">
                     <label for="name"> Nome do cliente</label><br>
                     <input type="text" id="name" name="name" v-model="name" placeholder="Digite o seu nome">
                 </div>
+
                 <div class="labelForm">
                     <label for="bread">Escolha o Pão:</label><br>
                     <select name="bread" id="bread" v-model="bread">
@@ -24,6 +26,7 @@
                         </option>
                     </select>
                 </div>
+
                 <div class="labelForm">
                     <label for="meat"> Escolha a carne do seu Burger:</label><br>
                     <select name="meat" id="meat" v-model="meat">
@@ -33,6 +36,7 @@
                         </option>
                     </select>
                 </div>
+
                 <div>
                     <label for="optional">Selecione os opcionais:</label>
                     <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
@@ -50,6 +54,8 @@
 <script>
 export default {
     name: "BurgerForm",
+    props:["logoNome", "alt"],
+
     data(){
         return{
             paes: null,
@@ -61,8 +67,7 @@ export default {
             carne: null,
             opcionais:[],
             status:"Solicitados",
-            msg: null
-
+            msg: null,
         }
     },
     methods:{
@@ -86,6 +91,7 @@ export default {
     .containerMake{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
         min-height: 60vh;
     }
     .head__form{
@@ -98,6 +104,18 @@ export default {
         display: grid;
         height: 100%;
         background: var(--red);
+        overflow: hidden;
+    }
+    .image_hungryBurger img{
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center right;
+        display: block;
+
+        filter: grayscale(20%);
+
     }
     .form{
         display: grid;
@@ -147,7 +165,30 @@ export default {
 
         width: 100%;
         padding: 1rem;
+        text-transform: uppercase;
+        font-weight: 800;
 
         border: none;
     }
+
+    .input-container input:hover{
+
+        font-weight: 700;
+        font-size: 1rem;
+    }
+    .image_hungryBurger img{
+        width: 100%;
+    }
+
+     @media only screen and (max-width: 768px) {
+
+        .containerMake{
+           grid-template-columns: 1fr;
+           grid-template-rows: .3fr 1fr;
+        }
+        .image_hungryBurger img{
+            height: 100%;
+        }
+     }
+
 </style>

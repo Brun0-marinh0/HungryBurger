@@ -1,6 +1,6 @@
 <template>
   <div class="containerForm">
-    <BurgerForm/>
+    <BurgerForm :logoNome="imagem_src" :alt="app_name" />
   </div>
 </template>
 
@@ -10,6 +10,12 @@
     name: "MakeBurger",
     components:{
       BurgerForm
+    },
+    data(){
+      return{
+       imagem_src: "/img/burger.jpg",
+        alt: "HungryBurger"
+      }
     }
   }
 </script>
