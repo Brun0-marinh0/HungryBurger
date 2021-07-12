@@ -1,5 +1,5 @@
 <template>
-<p>Componente de menssagem</p>
+    <Message :msg="msg" v-show="msg" />
     <div class="containerMake">
 
         <div class="image_hungryBurger">
@@ -10,16 +10,16 @@
             <div class="head__form">
                 <h1>Crie o seu hámburguer</h1>
             </div>
-            <form id="burger-form">
+            <form id="burger-form" @submit="createBurger">
                 
                 <div class="labelForm">
-                    <label for="name"> Nome do cliente</label><br>
-                    <input type="text" id="name" name="name" v-model="name" placeholder="Digite o seu nome">
+                    <label for="nome"> Nome do cliente</label><br>
+                    <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
                 </div>
 
                 <div class="labelForm">
                     <label for="bread">Escolha o Pão:</label><br>
-                    <select name="bread" id="bread" v-model="bread">
+                    <select name="pao" id="pao" v-model="pao">
                         <option value="">Selecione o seu pão</option>
                         <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
                             {{ pao.tipo}}
@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="labelForm">
-                    <label for="meat"> Escolha a carne do seu Burger:</label><br>
-                    <select name="meat" id="meat" v-model="meat">
+                    <label for="carne"> Escolha a carne do seu Burger:</label><br>
+                    <select name="carne" id="carne" v-model="carne">
                         <option value="">Selecione o tipo de carne</option>
                         <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
                             {{ carne.tipo}}
@@ -38,9 +38,9 @@
                 </div>
 
                 <div>
-                    <label for="optional">Selecione os opcionais:</label>
+                    <label for="opcionais">Selecione os opcionais:</label>
                     <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
-                        <input type="checkbox" name="optional" id="optional" v-model="optional" :value="opcional.tipo">
+                        <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" :value="opcional.tipo">
                         <span>{{opcional.tipo}}</span>
                     </div>
                 </div>
@@ -52,6 +52,9 @@
     </div>
 </template>
 <script>
+
+import Message from './Message.vue';
+
 export default {
     name: "BurgerForm",
     props:["logoNome", "alt"],
@@ -61,13 +64,11 @@ export default {
             paes: null,
             carnes: null,
             opcionaisdata: null,
-
             nome: null,
             pao: null,
             carne: null,
             opcionais:[],
-            status:"Solicitados",
-            msg: null,
+            msg: null
         }
     },
     methods:{
@@ -79,10 +80,50 @@ export default {
             this.paes = data.paes;
             this.carnes = data.carnes;
             this.opcionaisdata = data.opcionais;
+        },
+        async createBurger(e){
+            
+            e.preventDefault();
+
+            const data = {
+                nome: this.nome,
+                carne: this.carne,
+                pao: this.pao,
+                opcionais: Array.from(this.opcionais),
+                status:"Solicitados"
+            }
+
+            const dataJson = JSON.stringify(data);
+
+            const req = await fetch("http://localhost:3000/burgers",{
+                method: "POST",
+                headers:{"Content-Type": "application/json"},
+                body: dataJson
+            });
+
+            const res = await req.json();
+
+            //colocar uma msg de sistema
+            this.msg = `Olá ${this.nome} Pedido realizado com sucesso`;
+
+            //limoar msg
+
+            setTimeout(() => this.msg = "", 4000);
+
+
+            //limpar os campos
+            this.nome = "";
+            this.carne = "";
+            this.pao = "";
+            this.opcionais = "";
+
         }
     },
     mounted(){
         this.getIngredientes()
+    },
+    components:{
+        Message
     }
 }
 </script>

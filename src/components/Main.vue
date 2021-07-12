@@ -100,15 +100,25 @@
             </svg>
         </div>
         <div class="information__burger">
-            <h1>Algumas Posibilidades:</h1>
+            <h1>Algumas das Posibilidades:</h1>
             <div class="album__burger">
-                
+                <Slide/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Slide from './Slide.vue';
+
+    export default{
+
+        name: "Main",
+        components:{
+            Slide
+        }
+    }
+    
 
 </script>
 
@@ -132,8 +142,9 @@
         display: grid;
         
         grid-template-columns: 1fr 1fr;
-        margin: 22vh auto 0 auto;
+        margin: 18vh auto 0 auto;
     }
+
     .album__burger{
         background: var(--black);
         height: 100%;
@@ -147,16 +158,20 @@
         overflow: hidden;
         padding: 2rem;
     }
+
     .information__burger h1{
         text-transform: capitalize;
         font-size: 2.5vw;
         text-align: center;
-        
     }
+
     .album__burger{
         height: 42vw;
+        overflow: hidden;
     }
+
     /* animação====================================== */
+    
     svg{
         width: 42%;
         margin: auto;
@@ -178,7 +193,6 @@
         }
         
     }
-
     #tomates{
         animation: tomate 2s infinite ease-in-out alternate;
         transform-origin:center;
@@ -192,8 +206,8 @@
         to{
             transform: translateY(-115px);
         }
-        
     }
+
     #queijo{
         animation: queijo 2s infinite ease-in-out alternate;
         transform-origin:center;
@@ -207,7 +221,6 @@
         to{
             transform: translateY(-210px);
         }
-        
     }
 
     #carne{
@@ -255,7 +268,9 @@
             transform: translateY(-575px);
         }
     }
+
     /* responsive========================================== */
+
     @media only screen and (max-width: 600px) {
 
         .containerMain{
@@ -265,16 +280,10 @@
         }
         .illustration__burger{
             width: 100%;
-            height: auto;
             padding: .5rem;
         }
         svg{
             width: 80%;
         }
-        .illustration__burger,
-        .album__burger{
-            height: 100vw;
-        }
-
     }
 </style>
