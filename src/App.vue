@@ -1,6 +1,6 @@
 <template>
 <Navbar/>
-<div class="container">
+<div class="containerSite">
   <router-view/>
 </div>
 </template>
@@ -41,7 +41,7 @@ export default{
     border-radius: 10px;
   }
 
-  .container{
+  .containerSite{
     width: 100%;
     min-height: 97vh;
     padding: 1rem;

@@ -100,9 +100,9 @@
             </svg>
         </div>
         <div class="information__burger">
-            <h1>Algumas das Posibilidades:</h1>
+            <h1>Algumas das Posibilidades :</h1>
             <div class="album__burger">
-                <Slide/>
+                <Slide :slide1="slide1_src" :slide2="slide2_src" :slide3="slide3_src" :alt="app_name" />
             </div>
         </div>
     </div>
@@ -116,8 +116,17 @@
         name: "Main",
         components:{
             Slide
-        }
+        },
+        data(){
+      return{
+        slide1_src: "/img/slideImage/burgerSlide.jpg",
+        slide2_src: "/img/slideImage/burgerSlide2.jpg",
+        slide3_src: "/img/slideImage/burgerSlide3.jpg",
+        alt: "HungryBurger"
+      }
     }
+    }
+    
     
 
 </script>
@@ -142,7 +151,7 @@
         display: grid;
         
         grid-template-columns: 1fr 1fr;
-        margin: 18vh auto 0 auto;
+        margin: 8vw auto 0 auto;
     }
 
     .album__burger{
@@ -154,26 +163,32 @@
         background: var(--red);
         display: grid;
         width: 100%;
-        height: 42vw;
         overflow: hidden;
         padding: 2rem;
     }
 
     .information__burger h1{
         text-transform: capitalize;
-        font-size: 2.5vw;
-        text-align: center;
+        font-size: 2vw;
+        position: relative;
+        top: 4rem;
+        left: 1rem;
+        z-index: 99;
     }
 
     .album__burger{
-        height: 42vw;
         overflow: hidden;
+    }
+
+    .illustration__burger,
+    .album__burger{
+        height: 38vw;
     }
 
     /* animação====================================== */
     
     svg{
-        width: 42%;
+        width: 45%;
         margin: auto;
     }
 

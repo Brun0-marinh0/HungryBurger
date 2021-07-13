@@ -125,7 +125,7 @@
         /* border-right: .3rem solid var(--red); */
     }
     .informacao h1{
-        font-size: 3.8vw; 
+        font-size: 3.6vw; 
         margin-bottom: 2rem; 
     }
 
