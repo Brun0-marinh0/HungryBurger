@@ -17,9 +17,11 @@ export default{
 <style>
   :root {
     --white: #f5f5f5;
+    --full_white:#ffffff;
     --red:#EE5157;
     --black: #222222;
   }
+
   *{
     margin: 0;
     padding: 0;
@@ -43,7 +45,6 @@ export default{
 
   .containerSite{
     width: 100%;
-    min-height: 97vh;
     padding: 1rem;
   }
 

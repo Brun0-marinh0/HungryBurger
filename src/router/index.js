@@ -8,9 +8,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/MakeBurger',
+    path: '/makeBurger',
     name: 'MakeBurger',
     component: () => import('../views/MakeBurger.vue')
+  },
+  {
+    path: '/pedidos',
+    name: 'Pedidos',
+    component: () => import('../views/Pedidos.vue')
   }
 ]
 

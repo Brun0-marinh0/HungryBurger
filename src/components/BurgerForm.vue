@@ -1,7 +1,9 @@
 <template>
-    <Message :msg="msg" v-show="msg" />
+    <div class="message">
+      <Message :msg="msg" v-show="msg" />  
+    </div>
+    
     <div class="containerMake">
-
         <div class="image_hungryBurger">
             <img :src="logoNome" :alt="alt" id="logoNome">
         </div>
@@ -106,7 +108,7 @@ export default {
             //colocar uma msg de sistema
             this.msg = `Olá ${this.nome} Pedido realizado com sucesso`;
 
-            //limoar msg
+            //limpar msg
 
             setTimeout(() => this.msg = "", 4000);
 
@@ -129,6 +131,10 @@ export default {
 </script>
 
 <style scoped>
+    .message{
+        height: 2rem;
+        
+    }
     .containerMake{
         display: grid;
         grid-template-columns: 1fr 1fr;

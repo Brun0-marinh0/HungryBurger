@@ -79,69 +79,34 @@
   ],
   "burgers": [
     {
-      "nome": "Bruno Marinho",
+      "nome": "ffg",
       "carne": "Maminha",
-      "pao": "3 Queijos",
+      "pao": "Italiano Branco",
       "opcionais": [
-        "Cheddar"
-      ],
-      "status": "Solicitados",
-      "id": 1
-    },
-    {
-      "nome": "Bruno Marinho",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
+        "Bacon"
       ],
       "status": "Solicitados",
       "id": 2
     },
     {
-      "nome": "Bruno Marinho",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
+      "nome": "Rafael",
+      "carne": "Picanha",
+      "pao": "3 Queijos",
       "opcionais": [
         "Bacon",
-        "Cheddar"
+        "Cheddar",
+        "Tomate"
       ],
       "status": "Solicitados",
       "id": 3
     },
     {
       "nome": "Bruno Marinho",
-      "carne": "Picanha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
+      "carne": "Maminha",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [],
       "status": "Solicitados",
       "id": 4
-    },
-    {
-      "nome": "Bruno C Marinho",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitados",
-      "id": 5
-    },
-    {
-      "nome": "Bruno Marinho",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitados",
-      "id": 6
     }
   ]
 }
