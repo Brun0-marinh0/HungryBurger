@@ -79,33 +79,43 @@
   ],
   "burgers": [
     {
-      "nome": "ffg",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
+      "nome": "Bruno Marinho",
+      "carne": "Alcatra",
+      "pao": "Parmesão e Orégano",
       "opcionais": [
-        "Bacon"
+        "Bacon",
+        "Salame"
       ],
       "status": "Solicitados",
-      "id": 2
+      "id": 1
     },
     {
-      "nome": "Rafael",
+      "nome": "Pablo",
       "carne": "Picanha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Cheddar",
+        "Bacon",
+        "Salame",
+        "Tomate",
+        "Cebola roxa"
+      ],
+      "status": "Finalizado",
+      "id": 3
+    },
+    {
+      "nome": "Rafael Railton Reis de almeida",
+      "carne": "Alcatra",
       "pao": "3 Queijos",
       "opcionais": [
         "Bacon",
         "Cheddar",
-        "Tomate"
+        "Salame",
+        "Tomate",
+        "Cebola roxa",
+        "Pepino"
       ],
-      "status": "Solicitados",
-      "id": 3
-    },
-    {
-      "nome": "Bruno Marinho",
-      "carne": "Maminha",
-      "pao": "Parmesão e Orégano",
-      "opcionais": [],
-      "status": "Solicitados",
+      "status": "Em produção",
       "id": 4
     }
   ]

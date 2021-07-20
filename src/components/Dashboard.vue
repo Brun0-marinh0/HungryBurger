@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="">
+            <Message :msg="msg" v-show="msg" /> 
+        </div>
+        
         <div class="tabelas">
             <div class="lista_pedidos">
                 <h2>Gerenciador de pedidos</h2>
@@ -9,31 +13,24 @@
                             <tr>
                                 <th scope="col">Pedidos</th>
                                 <th scope="col">Clientes</th>
-                                <th scope="col">teste</th>
                                 <th scope="col">Staus</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                             <tbody v-for="burger in burgers" :key="burger.id">
-                            <tr @click = "amostra(burger.id,burger.nome,burger.pao,burger.carne)">
+                            <tr @click = "amostra(burger.id,burger.nome,burger.pao,burger.carne,burger.opcionais)">
                                     <th scope="row">{{burger.id}}</th>
                                     <td>{{burger.nome}}</td>
 
                                     <td>
-                                        <li v-for="(opcional, index) in burger.opcionais" :key="index">
-                                            {{opcional}}
-                                        </li>
-                                    </td>
-
-                                    <td>
-                                        <select name="status" class="status">
-                                            <option v-for="s in status" :key="s.id" value="s.tipo" :selected="burger.status == s.tipo">
+                                        <select name="status" class="status" @change="updatedBurger($event, burger.id)">
+                                            <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">
                                                 {{s.tipo}}
                                             </option>
                                         </select>
                                     </td>
 
-                                    <td><button>excluir</button></td>
+                                    <td><button @click="deleteBurger(burger.id)">excluir</button></td>
                                 </tr>
                             </tbody>
                     </table>
@@ -55,6 +52,8 @@
                 <div class="tipo">
                     <input id="carne" value="" disabled>
                 </div>
+
+                <div id="opcionais"></div>
                 
                 
             </div>
@@ -63,7 +62,7 @@
 </template>
 
 <script>
-
+import Message from './Message.vue';
 
 export default {
     name: "Dashboard",
@@ -71,18 +70,29 @@ export default {
         return{
             burgers: null,
             burger_id: null,
-             testes : null,
-            status: []
+            status: [],
+            msg: null
         }
     },
+    components:{
+       Message 
+    },
     methods: {
-        amostra: function (id,nome,pao,carne){
+        amostra: function (id,nome,pao,carne,opcionais){
 
         
         document.getElementById('nome').value = nome;
         document.getElementById('pao').value = pao;
         document.getElementById('carne').value = carne;
-        
+       // console.log(opcionais.length);
+        var myhtml = "<br>";
+        for(var i=0; i < opcionais.length;i++){
+
+            myhtml = myhtml +"•"+ opcionais[i]+"<br>";
+        }
+
+        document.getElementById('opcionais').innerHTML = myhtml;
+
         },
         async getPedidos(){
             const req = await fetch("http://localhost:3000/burgers");
@@ -100,7 +110,42 @@ export default {
             const data = await req.json();
 
             this.status = data;
-        }
+        },
+        async deleteBurger(id){
+            
+            const req = await fetch(`http://localhost:3000/burgers/${id}`,{
+                method: "DELETE"
+            });
+
+            const res = await req.json();
+
+            //colocar uma msg de sistema
+            this.msg = `Pedido removido com sucesso!`;
+
+            //limpar msg
+            setTimeout(() => this.msg = "", 4000);
+
+            this.getPedidos();
+        },
+         async updatedBurger(event, id){
+             const option = event.target.value;
+
+             const dataJson = JSON.stringify({status: option});
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`,{
+                 method:"PATCH",
+                 headers:{ "Content-Type": "application/json"},
+                 body: dataJson
+            });
+
+            const res = await req.json();
+
+            //colocar uma msg de sistema
+            this.msg = `Pedido N°${res.id} foi atualizado para ${res.status}!`;
+
+            //limpar msg
+            setTimeout(() => this.msg = "", 4000);
+         }
     },
     mounted(){
        this.getPedidos();
