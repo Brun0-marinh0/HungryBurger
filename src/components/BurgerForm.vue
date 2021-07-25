@@ -2,54 +2,57 @@
     <div class="message">
       <Message :msg="msg" v-show="msg" />  
     </div>
+    <div class="container">
+
     
-    <div class="containerMake">
-        <div class="image_hungryBurger">
-            <img :src="logoNome" :alt="alt" id="logoNome">
-        </div>
-
-        <div class="form">
-            <div class="head__form">
-                <h1>Crie o seu hámburguer</h1>
+        <div class="containerMake">
+            <div class="image_hungryBurger">
+                <img :src="logoNome" :alt="alt" id="logoNome">
             </div>
-            <form id="burger-form" @submit="createBurger">
-                
-                <div class="labelForm">
-                    <label for="nome"> Nome do cliente</label><br>
-                    <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
-                </div>
 
-                <div class="labelForm">
-                    <label for="bread">Escolha o Pão:</label><br>
-                    <select name="pao" id="pao" v-model="pao">
-                        <option value="">Selecione o seu pão</option>
-                        <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
-                            {{ pao.tipo}}
-                        </option>
-                    </select>
+            <div class="form">
+                <div class="head__form">
+                    <h1>Crie o seu hámburguer</h1>
                 </div>
-
-                <div class="labelForm">
-                    <label for="carne"> Escolha a carne do seu Burger:</label><br>
-                    <select name="carne" id="carne" v-model="carne">
-                        <option value="">Selecione o tipo de carne</option>
-                        <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
-                            {{ carne.tipo}}
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="opcionais">Selecione os opcionais:</label>
-                    <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
-                        <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" :value="opcional.tipo">
-                        <span>{{opcional.tipo}}</span>
+                <form id="burger-form" @submit="createBurger">
+                    
+                    <div class="labelForm">
+                        <label for="nome"> Nome do cliente</label><br>
+                        <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
                     </div>
-                </div>
-                <div class="input-container">
-                    <input type="submit" class="submit-bnt" value="Criar meu Burger">
-                </div>
-            </form>
+
+                    <div class="labelForm">
+                        <label for="bread">Escolha o Pão:</label><br>
+                        <select name="pao" id="pao" v-model="pao">
+                            <option value="">Selecione o seu pão</option>
+                            <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">
+                                {{ pao.tipo}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="labelForm">
+                        <label for="carne"> Escolha a carne do seu Burger:</label><br>
+                        <select name="carne" id="carne" v-model="carne">
+                            <option value="">Selecione o tipo de carne</option>
+                            <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">
+                                {{ carne.tipo}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Selecione os opcionais:</label>
+                        <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
+                            <input type="checkbox" name="opcionais" id="opcionais" v-model="opcionais" :value="opcional.tipo">
+                            <span>{{opcional.tipo}}</span>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <input type="submit" class="submit-bnt" value="Criar meu Burger" :disabled='isDisabled'>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -73,9 +76,10 @@ export default {
             msg: null
         }
     },
+    
     methods:{
+        
         async getIngredientes(){
-
             const req = await fetch("http://localhost:3000/ingredientes");
             const data = await req.json();
 
@@ -84,9 +88,8 @@ export default {
             this.opcionaisdata = data.opcionais;
         },
         async createBurger(e){
-            
-            e.preventDefault();
 
+            e.preventDefault();
             const data = {
                 nome: this.nome,
                 carne: this.carne,
@@ -119,7 +122,7 @@ export default {
             this.pao = "";
             this.opcionais = "";
 
-        }
+        }  
     },
     mounted(){
         this.getIngredientes()
@@ -127,13 +130,20 @@ export default {
     components:{
         Message
     }
+    
+
 }
 </script>
 
 <style scoped>
+    .container{
+        min-height: 80vh;
+    }
     .message{
         height: 2rem;
-        
+    }
+    .containerForm{
+        height: 90vh;
     }
     .containerMake{
         display: grid;
@@ -146,6 +156,9 @@ export default {
         text-align: center;
         margin-bottom: 1.5rem;
         padding: 0 0 1rem 0;
+    }
+    .head__form h1{
+        font-weight: bold;
     }
     .image_hungryBurger{
         display: grid;
@@ -226,6 +239,10 @@ export default {
     .image_hungryBurger img{
         width: 100%;
     }
+    .checkbox-container{
+        margin-bottom: 1rem;
+    }
+    
 
      @media only screen and (max-width: 768px) {
 

@@ -3,14 +3,21 @@
 <div class="containerSite">
   <router-view/>
 </div>
-
+<Footer :burgerBoy="img_src" :alt="app_name"/>
 </template>
-
 <script>
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
 export default{
   components:{
-    Navbar
+    Navbar,
+    Footer
+  },
+  data(){
+    return{
+      img_src: "/img/burgerBoy/burgerBoy-dark.svg",
+      alt: "hungryBurger"
+    }
   }
 }
 </script>
@@ -21,6 +28,7 @@ export default{
     --full_white:#ffffff;
     --red:#EE5157;
     --black: #222222;
+    --footer:#343A40;
   }
 
   *{
@@ -35,6 +43,10 @@ export default{
     font-family: 'Poppins', sans-serif;
     color: var(--red);
   }
+  p,h1,h2,h3{
+    margin: 0px;
+  }
+  
   /* width */
   ::-webkit-scrollbar {
     width: 5px;
@@ -43,11 +55,17 @@ export default{
     background: var(--red); 
     border-radius: 10px;
   }
+  /* Track */
+  ::-webkit-scrollbar-track {
+   background: rgba(128, 128, 128, 0.575);
+
+  }
 
   .containerSite{
     width: 100%;
     padding: 1rem;
   }
+
 
   @media only screen and (max-width: 768px) {
     .container{

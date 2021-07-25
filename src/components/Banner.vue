@@ -121,8 +121,6 @@
     .mainBanner__inform{
         display: grid;
         margin: auto;
-        padding-right: 1.5rem;
-        /* border-right: .3rem solid var(--red); */
     }
     .informacao h1{
         font-size: 3.6vw; 

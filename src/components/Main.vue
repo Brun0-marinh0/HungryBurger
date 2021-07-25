@@ -106,7 +106,6 @@
             </div>
         </div>
     </div>
-    
 </template>
 
 <script>
@@ -152,7 +151,7 @@
         display: grid;
         
         grid-template-columns: 1fr 1fr;
-        margin: 8vw auto 0 auto;
+        margin: 8vh auto 0 auto;
     }
 
     .album__burger{
@@ -172,7 +171,7 @@
         text-transform: capitalize;
         font-size: 2vw;
         position: relative;
-        top: 4rem;
+        top: 4vw;
         left: 1rem;
         z-index: 99;
     }
@@ -186,6 +185,10 @@
         height: 38vw;
     }
 
+    .sobre{
+        width: 100%;
+        text-align: center;
+    }
     /* animação====================================== */
     
     svg{
@@ -296,7 +299,7 @@
         }
         .illustration__burger{
             width: 100%;
-            padding: .5rem;
+            padding: 1em;
         }
         svg{
             width: 80%;

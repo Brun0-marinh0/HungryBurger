@@ -79,44 +79,16 @@
   ],
   "burgers": [
     {
-      "nome": "Bruno Marinho",
+      "nome": "josélia Marinho",
       "carne": "Alcatra",
-      "pao": "Parmesão e Orégano",
+      "pao": "Integral",
       "opcionais": [
-        "Bacon",
-        "Salame"
-      ],
-      "status": "Solicitados",
-      "id": 1
-    },
-    {
-      "nome": "Pablo",
-      "carne": "Picanha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cheddar",
-        "Bacon",
-        "Salame",
-        "Tomate",
-        "Cebola roxa"
-      ],
-      "status": "Finalizado",
-      "id": 3
-    },
-    {
-      "nome": "Rafael Railton Reis de almeida",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar",
-        "Salame",
         "Tomate",
         "Cebola roxa",
-        "Pepino"
+        "Bacon"
       ],
-      "status": "Em produção",
-      "id": 4
+      "status": "Solicitados",
+      "id": 2
     }
   ]
 }
