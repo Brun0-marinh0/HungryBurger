@@ -79,13 +79,25 @@
   ],
   "burgers": [
     {
-      "nome": "josélia Marinho",
+      "nome": "Bruno Marinho",
       "carne": "Alcatra",
-      "pao": "Integral",
+      "pao": "3 Queijos",
       "opcionais": [
-        "Tomate",
-        "Cebola roxa",
-        "Bacon"
+        "Bacon",
+        "Cheddar",
+        "Salame",
+        "Cebola roxa"
+      ],
+      "status": "Solicitados",
+      "id": 1
+    },
+    {
+      "nome": "rea",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
       ],
       "status": "Solicitados",
       "id": 2

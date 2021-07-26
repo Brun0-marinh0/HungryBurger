@@ -1,10 +1,7 @@
 <template>
-    <div class="message">
-      <Message :msg="msg" v-show="msg" />  
-    </div>
+      <MessagePopup :msg="msg" v-show="msg"/>  
+   
     <div class="container">
-
-    
         <div class="containerMake">
             <div class="image_hungryBurger">
                 <img :src="logoNome" :alt="alt" id="logoNome">
@@ -49,7 +46,7 @@
                         </div>
                     </div>
                     <div class="input-container">
-                        <input type="submit" class="submit-bnt" value="Criar meu Burger" :disabled='isDisabled'>
+                        <input type="submit" class="submit-bnt" id="submit-bnt" value="Criar meu Burger">
                     </div>
                 </form>
             </div>
@@ -57,8 +54,7 @@
     </div>
 </template>
 <script>
-
-import Message from './Message.vue';
+import MessagePopup from './MessagePopup.vue';
 
 export default {
     name: "BurgerForm",
@@ -88,7 +84,7 @@ export default {
             this.opcionaisdata = data.opcionais;
         },
         async createBurger(e){
-
+          
             e.preventDefault();
             const data = {
                 nome: this.nome,
@@ -97,38 +93,38 @@ export default {
                 opcionais: Array.from(this.opcionais),
                 status:"Solicitados"
             }
+            if(data.nome == null || data.carne == null || data.pao == null){
 
-            const dataJson = JSON.stringify(data);
+                this.msg = `Por favor, digite o seu nome, escolha o pão e a carne.`;
+                setTimeout(() => this.msg = "", 3000);
 
-            const req = await fetch("http://localhost:3000/burgers",{
-                method: "POST",
-                headers:{"Content-Type": "application/json"},
-                body: dataJson
-            });
+            }else{
 
-            const res = await req.json();
+                const dataJson = JSON.stringify(data);
 
-            //colocar uma msg de sistema
-            this.msg = `Olá ${this.nome} Pedido realizado com sucesso`;
-
-            //limpar msg
-
-            setTimeout(() => this.msg = "", 4000);
-
-
-            //limpar os campos
-            this.nome = "";
-            this.carne = "";
-            this.pao = "";
-            this.opcionais = "";
-
+                const req = await fetch("http://localhost:3000/burgers",{
+                    method: "POST",
+                    headers:{"Content-Type": "application/json"},
+                    body: dataJson
+                });
+                const res = await req.json();
+                //colocar uma msg de sistema
+                this.msg = `Olá ${this.nome} Pedido realizado com sucesso`;
+                //limpar msg
+                setTimeout(() => this.msg = "", 4000);
+                //limpar os campos
+                this.nome = "";
+                this.carne = "";
+                this.pao = "";
+                this.opcionais = "";
+            }
         }  
     },
     mounted(){
         this.getIngredientes()
     },
     components:{
-        Message
+        MessagePopup
     }
     
 
