@@ -30,7 +30,17 @@
                                             </select>
                                         </td>
 
-                                        <td><button @click="deleteBurger(burger.id)">excluir</button></td>
+                                        <td>
+                                            <button @click="() => TogglePopup('buttonTrigger')">Deletar</button>
+
+                                            <PopupDelete v-if="popupTriggers.buttonTrigger">
+                                                <button @click="deleteBurger(burger.id)">excluir</button>
+                                            </PopupDelete>
+                                            <PopupDelete v-if="popupTriggers.timedTrigger">
+                                                <p>teste 2</p>
+                                            </PopupDelete>
+                                            
+                                        </td>
                                     </tr>
                                 </tbody>
                         </table>
@@ -66,10 +76,30 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import Message from './Message.vue';
+import PopupDelete from './PopupDelete.vue'
 
 export default {
     name: "Dashboard",
+    setup(){
+        const popupTriggers = ref({
+            buttonTrigger: false,
+            timedTrigger: false
+        });
+
+        const TogglePopup = (trigger) => {
+            popupTriggers.value[trigger] = !popupTriggers.value
+            [trigger]
+        }
+
+
+        return{
+            PopupDelete,
+            popupTriggers,
+            TogglePopup
+        }
+    },
     data(){
         return{
             burgers: null,
@@ -79,7 +109,8 @@ export default {
         }
     },
     components:{
-       Message 
+       Message,
+       PopupDelete
     },
     methods: {
         amostra: function (id,nome,pao,carne,opcionais){
@@ -153,7 +184,6 @@ export default {
     },
     mounted(){
        this.getPedidos();
-      
     }
 }
 </script>

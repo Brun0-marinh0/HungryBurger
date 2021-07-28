@@ -77,30 +77,5 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": [
-    {
-      "nome": "Bruno Marinho",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar",
-        "Salame",
-        "Cebola roxa"
-      ],
-      "status": "Solicitados",
-      "id": 1
-    },
-    {
-      "nome": "rea",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitados",
-      "id": 2
-    }
-  ]
+  "burgers": []
 }

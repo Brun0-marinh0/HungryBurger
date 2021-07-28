@@ -1,12 +1,11 @@
 <template>
     <div class="popup">
-        <div class="popup-inner">
-            <p>Popup</p>
+        <div class="card">
             <slot/>
             <button class="popup-close" @click="TogglePopup()">
                 Close Popup
             </button>
-        </div>
+         </div>
     </div>
 </template>
 
@@ -15,7 +14,6 @@ export default {
     props:['TogglePopup']
 }
 </script>
-
 <style scoped>
     .popup{
         position: fixed;
@@ -29,8 +27,15 @@ export default {
         align-items: center;
         justify-content: center;
     }
-    .popup-inner{
+    .card{
+        display: block;
+        text-align: center;
+        width: 40rem;
+        max-width: 40rem;
+        height: 20rem;
         background: var(--white);
+
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 
 </style>

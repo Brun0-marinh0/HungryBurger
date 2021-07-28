@@ -4,7 +4,6 @@
             <div class="texto">
                 <h3>{{msg}}</h3>
             </div>
-            
         </div>
     </div>
 </template>

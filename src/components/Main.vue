@@ -112,23 +112,19 @@
     import Slide from './Slide.vue';
 
     export default{
-
         name: "Main",
         components:{
             Slide
         },
         data(){
-      return{
-        slide1_src: "/img/slideImage/burgerSlide.jpg",
-        slide2_src: "/img/slideImage/burgerSlide2.jpg",
-        slide3_src: "/img/slideImage/burgerSlide3.jpg",
-        alt: "HungryBurger"
-      }
+            return{
+                slide1_src: "/img/slideImage/burgerSlide.jpg",
+                slide2_src: "/img/slideImage/burgerSlide2.jpg",
+                slide3_src: "/img/slideImage/burgerSlide3.jpg",
+                alt: "HungryBurger"
+            }
+        }
     }
-    }
-    
-    
-
 </script>
 
 <style scoped>
@@ -190,7 +186,6 @@
         text-align: center;
     }
     /* animação====================================== */
-    
     svg{
         width: 45%;
         margin: auto;

@@ -80,7 +80,7 @@ export default {
         text-align: start;
     }
     .qualidade__texto p{
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-weight: bold;
     }
     @media only screen and (max-width: 768px) {
