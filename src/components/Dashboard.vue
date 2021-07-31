@@ -1,8 +1,7 @@
 <template>
     <div>
-        <div class="">
             <Message :msg="msg" v-show="msg" /> 
-        </div>
+
         <div class="container">
             <h2>Gerenciador de pedidos</h2>
             <div class="tabelas">
@@ -89,8 +88,7 @@ export default {
         });
 
         const TogglePopup = (trigger) => {
-            popupTriggers.value[trigger] = !popupTriggers.value
-            [trigger]
+            popupTriggers.value[trigger] = !popupTriggers.value[trigger]
         }
 
 
@@ -191,6 +189,10 @@ export default {
 <style  scoped>
     .container{
         min-height: 85vh;
+    }
+    .message_status{
+        height: 2rem;
+        background: black;
     }
     .tabelas{
         display: grid;

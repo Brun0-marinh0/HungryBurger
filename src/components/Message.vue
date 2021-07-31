@@ -12,5 +12,15 @@
     })
 </script>
 <style scoped>
+.message__container{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    font-weight: 700;
 
+
+    background: var(--red);
+    color: var(--white);
+}
 </style>
