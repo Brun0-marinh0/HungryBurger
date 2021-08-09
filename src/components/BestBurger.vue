@@ -8,7 +8,7 @@
         <div class="descricoes">
             <div class="descricao">
                     <div class="qualidade__ilustracao">
-
+                        <img src="/img/pao.svg" alt="">
                     </div>
                     <div class="qualidade__texto">
                         <p>Pão quentinho e fofinho!</p>
@@ -16,7 +16,7 @@
             </div>
             <div class="descricao">
                     <div class="qualidade__ilustracao">
-
+                            <img src="/img/carne.svg" alt="">
                     </div>
                     <div class="qualidade__texto">
                         <p>Carne da melhor qualidade!</p>
@@ -24,7 +24,7 @@
             </div>
             <div class="descricao">
                     <div class="qualidade__ilustracao">
-
+                        <img src="/img/alface.svg" alt="">
                     </div>
                     <div class="qualidade__texto">
                         <p>Igredientes frescos!</p>
@@ -71,8 +71,17 @@ export default {
     .qualidade__ilustracao{
         width: 100%;
         height: 100%;
+        padding: .8rem;
+        display: grid;
+        grid-template: 1fr/1fr;
+        align-items: center;
         border-radius: .5rem;
         background: var(--red);
+
+    }
+    .qualidade__ilustracao img{
+        width: 100%;
+        align-items: center;
     }
     .qualidade__texto{
         display: grid;

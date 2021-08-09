@@ -30,15 +30,12 @@
                                         </td>
 
                                         <td>
-                                            <button @click="() => TogglePopup('buttonTrigger')">Deletar</button>
+                                            <button @click="() => TogglePopup('buttonTrigger') ">Deletar</button>
 
-                                            <PopupDelete v-if="popupTriggers.buttonTrigger">
-                                                <button @click="deleteBurger(burger.id)">excluir</button>
+                                            <PopupDelete v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')">
+                                                <h3 class="titulo_excluir">Deseja realmente <b>excluir?</b></h3>
+                                                <button class="bnt_excluir" v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" @click="deleteBurger(burger.id)">Exclui</button>
                                             </PopupDelete>
-                                            <PopupDelete v-if="popupTriggers.timedTrigger">
-                                                <p>teste 2</p>
-                                            </PopupDelete>
-                                            
                                         </td>
                                     </tr>
                                 </tbody>
@@ -83,7 +80,7 @@ export default {
     name: "Dashboard",
     setup(){
         const popupTriggers = ref({
-            buttonTrigger: false,
+            buttonTrigger:false,
             timedTrigger: false
         });
 
@@ -240,7 +237,24 @@ export default {
         overflow-y: scroll;
         height: 70vh;
     }
-    
+    button{
+        border: none;
+        background: var(--red);
+        color: var(--white);
+        padding: .3rem .8rem;
+        border-radius: 1rem;
+    }
+    .bnt_excluir{
+        background: #f89396;
+        margin-right: 3rem;
+        width: 150px;
+    }
+    .titulo_excluir{
+        margin-bottom: 5rem;
+    }
+    label{
+        color: var(--black);
+    }
 
     /* responsive========================================== */
     @media only screen and (max-width: 768px) {

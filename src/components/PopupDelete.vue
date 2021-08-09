@@ -3,7 +3,7 @@
         <div class="card">
             <slot/>
             <button class="popup-close" @click="TogglePopup()">
-                Close Popup
+                Cancelar
             </button>
          </div>
     </div>
@@ -28,14 +28,25 @@ export default {
         justify-content: center;
     }
     .card{
+        color: var(--red);
         display: block;
         text-align: center;
-        width: 40rem;
+        padding: 2rem;
+        width: 30rem;
         max-width: 40rem;
-        height: 20rem;
+        height: 15rem;
+        border-radius: .8rem;
         background: var(--white);
-
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+    button{
+        border: none;
+        background: var(--red);
+        color: var(--white);
+        padding: .3rem .8rem;
+        border-radius: 1rem;
+        width: 150px;
+    }
+    
 
 </style>
